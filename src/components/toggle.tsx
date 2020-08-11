@@ -2,7 +2,8 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { toggleMessage } from "../actions";
 import { Dispatch } from "redux";
-import { AppState, IReduxBaseAction } from "../reducers";
+import { TReducers } from "../reducers";
+import { IReduxToggleAction } from "../reducers/toggle";
 
 const Tg: React.FC<ToggleProps> = ({
   messageVisibility,
@@ -19,8 +20,8 @@ const Tg: React.FC<ToggleProps> = ({
  * @param state tồng tất cả state
  * @return object
  */
-const mapStateToProps = (state: AppState) => ({
-  messageVisibility: state.showMessage
+const mapStateToProps = (state: TReducers) => ({
+  messageVisibility: state.toggleReducer.showMessage
 });
 
 /**
@@ -28,7 +29,7 @@ const mapStateToProps = (state: AppState) => ({
  * @param dispatch đây là hàm mà redux chung cấp cho chúng ta, dành cho dispatch một action tới reducer
  * @return object
  */
-const mapDispatchToProps = (dispatch: Dispatch<IReduxBaseAction>) => ({
+const mapDispatchToProps = (dispatch: Dispatch<IReduxToggleAction>) => ({
   toggleMessage: (messageVisibility: boolean) => dispatch(toggleMessage(messageVisibility))
 })
 
