@@ -50,4 +50,7 @@ export interface IReduxRemovePeopleAction {
   payload: number;
 }
 
+/**
+ * Root  Action chứa hai action xoa và thêm
+ */
 export type TPersonActions = IReduxAddPeopleAction | IReduxRemovePeopleAction;

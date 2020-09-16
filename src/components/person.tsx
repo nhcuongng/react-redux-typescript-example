@@ -16,12 +16,12 @@ export const Person = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addPerson(newPerson));
+    dispatch(addPerson(newPerson)); // dispatch action thêm person
     setNewPerson("");
   };
 
-  const dispatchNewPerson = (id: number) => () => {
-    dispatch(removePerson(id));
+  const dispatchRemovePerson = (id: number) => () => {
+    dispatch(removePerson(id)); // dispatch action xoá person
   };
 
   return (
@@ -30,7 +30,7 @@ export const Person = () => {
         {people.map(person => (
           <li key={person.id}>
             <span>{person.name}</span>
-            <button onClick={dispatchNewPerson(person.id)}>Remove</button>
+            <button onClick={dispatchRemovePerson(person.id)}>Remove</button>
           </li>
         ))}
       </ul>
